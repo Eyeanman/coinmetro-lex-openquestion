@@ -3,7 +3,6 @@ import logging
 import os
 
 
-
 ROOT_LOG_LEVEL = os.environ["ROOT_LOG_LEVEL"]
 LOG_LEVEL = os.environ["LOG_LEVEL"]
 API_URL_BASE = os.environ["API_URL_BASE"]
@@ -36,13 +35,28 @@ def get_api_currentprice(original_coin, destination_coin):
     request_url = API_URL_BASE + url_funtion + original_coin + destination_coin
     payload={}
     headers = {}
-    response = requests.request("GET", request_url, headers=headers, data=payload)
+    response = requests.request("GET", request_url, headers=headers, data=payload).json()
+    logger.debug(f"API response: {response}")
+    logger.debug(f"Length: {len(response['latestPrices'])}")
+    if len(response['latestPrices'])==1:
+        logger.debug(f"Got a response with price")
+        return response
+    else:
+        logger.debug(f"Got a response, but no price")
+        request_url = API_URL_BASE + url_funtion + destination_coin + original_coin
+        reversepair_response = requests.request("GET", request_url, headers=headers, data=payload).json()
+        reversepair_price = reversepair_response['latestPrices'][0]['price']
+        logger.debug(f"Reverse Pair {destination_coin}{original_coin} price: {reversepair_price}")
+        pair_price = 1 / reversepair_price
+        logger.debug(f"Calc price = {pair_price}")
+        reversepair_response['latestPrices'][0]['price'] = pair_price
+        return reversepair_response
+    logger.debug(f"API Response: {response.text}")
     return response
 
 def get_currentprice_price(currentprice_rawdata):
-    currentprice_json = currentprice_rawdata.json()
-    response = currentprice_json['latestPrices'][0]['price']
-    print(f"Current Price: {response}")
+    response = currentprice_rawdata['latestPrices'][0]['price']
+    logger.debug(f"Current Price: {response}")
     return response
 
 def get_coin_symbol(coin, value):
@@ -51,14 +65,14 @@ def get_coin_symbol(coin, value):
         'USD': '$',
         'GBP': '£'
     }
-    print(f"Checking if {coin} is in {currencySymbol}")
+    logger.debug(f"Checking if {coin} is in {currencySymbol}")
     if coin in currencySymbol:
         return currencySymbol[coin] + str(round(float(value), 2))
     else:
         return f"{coin} {value}"
 
 def lambda_handler(event, context):
-    print(f"Event: {event}")
+    logger.debug(f"Event: {event}")
     intent_slots = get_slots(event)
     original_coin = intent_slots['Original_Coin'].upper()
     destination_coin = intent_slots['Destination_Coin'].upper()
@@ -81,5 +95,5 @@ def lambda_handler(event, context):
         {'contentType': 'PlainText',
         'content': response_message})
     
-    print(f"Final Response: {response}")
+    logger.debug(f"Final Response: {response}")
     return response
