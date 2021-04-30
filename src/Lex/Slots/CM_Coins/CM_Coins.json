@@ -1,0 +1,197 @@
+{
+    "metadata": {
+      "schemaVersion": "1.0",
+      "importType": "LEX",
+      "importFormat": "JSON"
+    },
+    "resource": {
+      "name": "CM_Coins",
+      "version": "2",
+      "enumerationValues": [
+        {
+          "value": "BTC",
+          "synonyms": [
+            "btc",
+            "Bitcoin"
+          ]
+        },
+        {
+          "value": "ETH",
+          "synonyms": [
+            "eth",
+            "Ethereum"
+          ]
+        },
+        {
+          "value": "XCM",
+          "synonyms": [
+            "xcm",
+            "Coinmetro Token"
+          ]
+        },
+        {
+            "value": "XRP",
+            "synonyms": [
+              "xrp",
+              "Ripple"
+            ]
+          },
+          {
+            "value": "LTC",
+            "synonyms": [
+              "ltc",
+              "Litecoin",
+              "lite coin"
+            ]
+          },
+          {
+            "value": "BCH",
+            "synonyms": [
+              "bch",
+              "Bitcoin Cash"
+            ]
+          },
+          {
+            "value": "LXM",
+            "synonyms": [
+              "lxm",
+              "Lumen"
+            ]
+          },
+          {
+            "value": "OMG",
+            "synonyms": [
+              "omg",
+              "OmiseGO",
+              "Omise go"
+            ]
+          },
+          {
+            "value": "LINK",
+            "synonyms": [
+              "link",
+              "Chainlink",
+              "Chain link"
+            ]
+          },
+          {
+            "value": "ENJ",
+            "synonyms": [
+              "enj",
+              "EnjinCoin",
+              "Enjin Coin"
+            ]
+          },
+          {
+            "value": "BAT",
+            "synonyms": [
+              "bat",
+              "Basic Attention Token"
+            ]
+          },
+          {
+            "value": "QNT",
+            "synonyms": [
+              "qnt",
+              "Quant"
+            ]
+          },
+          {
+            "value": "PRQ",
+            "synonyms": [
+              "prq",
+              "Parsiq"
+            ]
+          },
+          {
+            "value": "KDA",
+            "synonyms": [
+              "kda",
+              "Kadena"
+            ]
+          },
+          {
+            "value": "XTZ",
+            "synonyms": [
+              "xtz",
+              "Tezos"
+            ]
+          },
+          {
+            "value": "USDC",
+            "synonyms": [
+              "usdc",
+              "USD Coin"
+            ]
+          },
+          {
+            "value": "PRQB",
+            "synonyms": [
+              "prqb",
+              "Parsiq Boost"
+            ]
+          },
+          {
+            "value": "VXV",
+            "synonyms": [
+              "vxv",
+              "Vectorspace AI"
+            ]
+          },
+          {
+            "value": "DNA",
+            "synonyms": [
+              "dna",
+              "EncrypGen",
+              "Encrypt Gen"
+            ]
+          },
+          {
+            "value": "OCEAN",
+            "synonyms": [
+              "ocean",
+              "Ocean Protocol"
+            ]
+          },
+          {
+            "value": "FLUX",
+            "synonyms": [
+              "flux",
+              "Flux Network"
+            ]
+          },
+          {
+            "value": "HTR",
+            "synonyms": [
+              "htr",
+              "Hathor Network"
+            ]
+          },
+        {
+          "value": "EUR",
+          "synonyms": [
+            "Euro",
+            "eur"
+          ]
+        },
+        {
+          "value": "GBP",
+          "synonyms": [
+            "great british Steerling",
+            "sterling",
+            "english pounds",
+            "great british pounds",
+            "gpb"
+          ]
+        },
+        {
+          "value": "USD",
+          "synonyms": [
+            "US Dollars",
+            "usd"
+          ]
+        }
+      ],
+      "valueSelectionStrategy": "TOP_RESOLUTION"
+    }
+  }
